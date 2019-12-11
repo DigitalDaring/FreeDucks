@@ -1,6 +1,6 @@
-import {FreeDucks} from './freeducks/index';
+import {FreeDucks} from '../freeducks/index';
 
-export class SampleDump extends HTMLElement {
+export class StateDump extends HTMLElement {
 
     private shadow: ShadowRoot;
 
@@ -13,7 +13,7 @@ export class SampleDump extends HTMLElement {
     }
 
     static get componentName(): string {
-        return 'sample-dump';
+        return 'state-dump';
     }
 
     private get css(): string {

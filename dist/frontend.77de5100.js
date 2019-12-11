@@ -117,7 +117,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"sample-button.ts":[function(require,module,exports) {
+})({"components/sample-button.ts":[function(require,module,exports) {
 "use strict";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -267,7 +267,7 @@ function () {
 }();
 
 exports.FreeDucks = FreeDucks;
-},{}],"sample-dump.ts":[function(require,module,exports) {
+},{}],"components/state-dump.ts":[function(require,module,exports) {
 "use strict";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -300,17 +300,17 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var SampleDump =
+var StateDump =
 /*#__PURE__*/
 function (_HTMLElement) {
-  _inherits(SampleDump, _HTMLElement);
+  _inherits(StateDump, _HTMLElement);
 
-  function SampleDump(freeducks) {
+  function StateDump(freeducks) {
     var _this;
 
-    _classCallCheck(this, SampleDump);
+    _classCallCheck(this, StateDump);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(SampleDump).call(this));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(StateDump).call(this));
     _this.freeducks = freeducks;
     _this.shadow = _this.attachShadow({
       mode: 'open'
@@ -321,7 +321,7 @@ function (_HTMLElement) {
     return _this;
   }
 
-  _createClass(SampleDump, [{
+  _createClass(StateDump, [{
     key: "render",
     value: function render(state) {
       var friendlyState = JSON.stringify(state, null, 2);
@@ -335,14 +335,14 @@ function (_HTMLElement) {
   }], [{
     key: "componentName",
     get: function get() {
-      return 'sample-dump';
+      return 'state-dump';
     }
   }]);
 
-  return SampleDump;
+  return StateDump;
 }(_wrapNativeSuper(HTMLElement));
 
-exports.SampleDump = SampleDump;
+exports.StateDump = StateDump;
 },{}],"assets/plants/plants_0.png":[function(require,module,exports) {
 module.exports = "/plants_0.a9b04166.png";
 },{}],"assets/plants/plants_1.png":[function(require,module,exports) {
@@ -355,7 +355,7 @@ module.exports = "/plants_3.b2b281e6.png";
 module.exports = "/plants_4.20c5fe94.png";
 },{}],"assets/plants/plants_5.png":[function(require,module,exports) {
 module.exports = "/plants_5.00ecc715.png";
-},{}],"sample-plant.ts":[function(require,module,exports) {
+},{}],"components/potted-plant.ts":[function(require,module,exports) {
 "use strict";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -394,29 +394,29 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var plants_0_png_1 = __importDefault(require("./assets/plants/plants_0.png"));
+var plants_0_png_1 = __importDefault(require("../assets/plants/plants_0.png"));
 
-var plants_1_png_1 = __importDefault(require("./assets/plants/plants_1.png"));
+var plants_1_png_1 = __importDefault(require("../assets/plants/plants_1.png"));
 
-var plants_2_png_1 = __importDefault(require("./assets/plants/plants_2.png"));
+var plants_2_png_1 = __importDefault(require("../assets/plants/plants_2.png"));
 
-var plants_3_png_1 = __importDefault(require("./assets/plants/plants_3.png"));
+var plants_3_png_1 = __importDefault(require("../assets/plants/plants_3.png"));
 
-var plants_4_png_1 = __importDefault(require("./assets/plants/plants_4.png"));
+var plants_4_png_1 = __importDefault(require("../assets/plants/plants_4.png"));
 
-var plants_5_png_1 = __importDefault(require("./assets/plants/plants_5.png"));
+var plants_5_png_1 = __importDefault(require("../assets/plants/plants_5.png"));
 
-var SamplePlant =
+var PottedPlant =
 /*#__PURE__*/
 function (_HTMLElement) {
-  _inherits(SamplePlant, _HTMLElement);
+  _inherits(PottedPlant, _HTMLElement);
 
-  function SamplePlant(freeducks) {
+  function PottedPlant(freeducks) {
     var _this;
 
-    _classCallCheck(this, SamplePlant);
+    _classCallCheck(this, PottedPlant);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(SamplePlant).call(this));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(PottedPlant).call(this));
     _this.freeducks = freeducks;
     _this.shadow = _this.attachShadow({
       mode: 'open'
@@ -433,7 +433,7 @@ function (_HTMLElement) {
     return _this;
   }
 
-  _createClass(SamplePlant, [{
+  _createClass(PottedPlant, [{
     key: "render",
     value: function render(state) {
       var plantProgress;
@@ -471,15 +471,158 @@ function (_HTMLElement) {
   }], [{
     key: "componentName",
     get: function get() {
-      return 'sample-plant';
+      return 'potted-plant';
     }
   }]);
 
-  return SamplePlant;
+  return PottedPlant;
 }(_wrapNativeSuper(HTMLElement));
 
-exports.SamplePlant = SamplePlant;
-},{"./assets/plants/plants_0.png":"assets/plants/plants_0.png","./assets/plants/plants_1.png":"assets/plants/plants_1.png","./assets/plants/plants_2.png":"assets/plants/plants_2.png","./assets/plants/plants_3.png":"assets/plants/plants_3.png","./assets/plants/plants_4.png":"assets/plants/plants_4.png","./assets/plants/plants_5.png":"assets/plants/plants_5.png"}],"index.ts":[function(require,module,exports) {
+exports.PottedPlant = PottedPlant;
+},{"../assets/plants/plants_0.png":"assets/plants/plants_0.png","../assets/plants/plants_1.png":"assets/plants/plants_1.png","../assets/plants/plants_2.png":"assets/plants/plants_2.png","../assets/plants/plants_3.png":"assets/plants/plants_3.png","../assets/plants/plants_4.png":"assets/plants/plants_4.png","../assets/plants/plants_5.png":"assets/plants/plants_5.png"}],"components/game-window.ts":[function(require,module,exports) {
+"use strict";
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _wrapNativeSuper(Class) { var _cache = typeof Map === "function" ? new Map() : undefined; _wrapNativeSuper = function _wrapNativeSuper(Class) { if (Class === null || !_isNativeFunction(Class)) return Class; if (typeof Class !== "function") { throw new TypeError("Super expression must either be null or a function"); } if (typeof _cache !== "undefined") { if (_cache.has(Class)) return _cache.get(Class); _cache.set(Class, Wrapper); } function Wrapper() { return _construct(Class, arguments, _getPrototypeOf(this).constructor); } Wrapper.prototype = Object.create(Class.prototype, { constructor: { value: Wrapper, enumerable: false, writable: true, configurable: true } }); return _setPrototypeOf(Wrapper, Class); }; return _wrapNativeSuper(Class); }
+
+function isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _construct(Parent, args, Class) { if (isNativeReflectConstruct()) { _construct = Reflect.construct; } else { _construct = function _construct(Parent, args, Class) { var a = [null]; a.push.apply(a, args); var Constructor = Function.bind.apply(Parent, a); var instance = new Constructor(); if (Class) _setPrototypeOf(instance, Class.prototype); return instance; }; } return _construct.apply(null, arguments); }
+
+function _isNativeFunction(fn) { return Function.toString.call(fn).indexOf("[native code]") !== -1; }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var plants_0_png_1 = __importDefault(require("../assets/plants/plants_0.png"));
+
+var plants_1_png_1 = __importDefault(require("../assets/plants/plants_1.png"));
+
+var plants_2_png_1 = __importDefault(require("../assets/plants/plants_2.png"));
+
+var plants_3_png_1 = __importDefault(require("../assets/plants/plants_3.png"));
+
+var plants_4_png_1 = __importDefault(require("../assets/plants/plants_4.png"));
+
+var plants_5_png_1 = __importDefault(require("../assets/plants/plants_5.png"));
+
+var GameWindow =
+/*#__PURE__*/
+function (_HTMLElement) {
+  _inherits(GameWindow, _HTMLElement);
+
+  function GameWindow(freeducks) {
+    var _this;
+
+    _classCallCheck(this, GameWindow);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(GameWindow).call(this));
+    _this.freeducks = freeducks;
+    _this.plantPotImage = new Image();
+    _this.seedImage = new Image();
+    _this.seedlingImage = new Image();
+    _this.youngImage = new Image();
+    _this.grownImage = new Image();
+    _this.berriesImage = new Image();
+    _this.shadow = _this.attachShadow({
+      mode: 'open'
+    });
+    _this.plantPotImage.src = plants_0_png_1.default;
+    _this.seedImage.src = plants_1_png_1.default;
+    _this.seedlingImage.src = plants_2_png_1.default;
+    _this.youngImage.src = plants_3_png_1.default;
+    _this.grownImage.src = plants_4_png_1.default;
+    _this.berriesImage.src = plants_5_png_1.default;
+    _this.shadow.innerHTML = '<canvas id="plant-canvas" width="48px" height="72px"></canvas';
+    _this.canvas = _this.shadow.querySelector('#plant-canvas');
+    _this.canvasContext = _this.canvas.getContext('2d');
+
+    _this.plantPotImage.onload = function () {
+      _this.freeducks.subscribe(function (state) {
+        _this.render(state);
+      });
+
+      window.setInterval(function () {
+        _this.freeducks.dispatch({
+          name: 'increment'
+        });
+      }, 2000);
+    };
+
+    return _this;
+  }
+
+  _createClass(GameWindow, [{
+    key: "render",
+    value: function render(state) {
+      this.canvasContext.fillStyle = '#FFF';
+      this.canvasContext.fillRect(0, 0, this.canvas.width, this.canvas.height);
+      this.canvasContext.drawImage(this.plantPotImage, 0, 0);
+
+      if (state.count > 1 && state.count < 10) {
+        this.canvasContext.drawImage(this.seedImage, 0, 0);
+      } else if (state.count >= 10 && state.count < 20) {
+        this.canvasContext.drawImage(this.seedlingImage, 0, 0);
+      } else if (state.count >= 20 && state.count < 30) {
+        this.canvasContext.drawImage(this.youngImage, 0, 0);
+      } else if (state.count >= 30) {
+        this.canvasContext.drawImage(this.grownImage, 0, 0);
+      }
+
+      if (state.count > 40) {
+        this.canvasContext.drawImage(this.berriesImage, 0, 0);
+      }
+    }
+  }], [{
+    key: "componentName",
+    get: function get() {
+      return 'game-window';
+    }
+  }]);
+
+  return GameWindow;
+}(_wrapNativeSuper(HTMLElement));
+
+exports.GameWindow = GameWindow; // super();
+// this.shadow = this.attachShadow({mode: 'open'});
+// const potImg = new Image(48, 72);
+// potImg.src = background;
+// this.shadow.innerHTML = '<canvas id="plant-canvas" width="48px" height="72px"></canvas';
+// this.canvas = this.shadow.querySelector('#plant-canvas') as HTMLCanvasElement;
+// this.canvasContext = this.canvas.getContext('2d');
+// this.canvasContext.fillStyle = 'rgba(0,0,0,1)';
+// this.canvasContext.fillRect(0, 0, 20, 20);
+// potImg.onload = (e) => {
+//     this.canvasContext.drawImage(potImg, 0, 0);
+// };
+// this.freeducks.subscribe((state) => {
+//     this.render(state);
+// })
+},{"../assets/plants/plants_0.png":"assets/plants/plants_0.png","../assets/plants/plants_1.png":"assets/plants/plants_1.png","../assets/plants/plants_2.png":"assets/plants/plants_2.png","../assets/plants/plants_3.png":"assets/plants/plants_3.png","../assets/plants/plants_4.png":"assets/plants/plants_4.png","../assets/plants/plants_5.png":"assets/plants/plants_5.png"}],"index.ts":[function(require,module,exports) {
 "use strict";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -500,13 +643,15 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var sample_button_1 = require("./sample-button");
+var sample_button_1 = require("./components/sample-button");
 
 var index_1 = require("./freeducks/index");
 
-var sample_dump_1 = require("./sample-dump");
+var state_dump_1 = require("./components/state-dump");
 
-var sample_plant_1 = require("./sample-plant");
+var potted_plant_1 = require("./components/potted-plant");
+
+var game_window_1 = require("./components/game-window");
 
 var freeducks = new index_1.FreeDucks({
   count: 0
@@ -524,52 +669,46 @@ var countReducer = {
 };
 freeducks.registerReducer(countReducer);
 
-var InjectedSampleButton =
-/*#__PURE__*/
-function (_sample_button_1$Samp) {
-  _inherits(InjectedSampleButton, _sample_button_1$Samp);
+var DefineWithState = function DefineWithState(ComponentClass) {
+  var InjectedComponent =
+  /*#__PURE__*/
+  function (_ComponentClass) {
+    _inherits(InjectedComponent, _ComponentClass);
 
-  function InjectedSampleButton() {
-    _classCallCheck(this, InjectedSampleButton);
+    function InjectedComponent() {
+      _classCallCheck(this, InjectedComponent);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(InjectedSampleButton).call(this, freeducks));
-  }
+      return _possibleConstructorReturn(this, _getPrototypeOf(InjectedComponent).call(this, freeducks));
+    }
 
-  return InjectedSampleButton;
-}(sample_button_1.SampleButton);
+    return InjectedComponent;
+  }(ComponentClass);
 
-var InjectedSampleDump =
-/*#__PURE__*/
-function (_sample_dump_1$Sample) {
-  _inherits(InjectedSampleDump, _sample_dump_1$Sample);
+  window.customElements.define(ComponentClass.componentName, InjectedComponent);
+};
 
-  function InjectedSampleDump() {
-    _classCallCheck(this, InjectedSampleDump);
-
-    return _possibleConstructorReturn(this, _getPrototypeOf(InjectedSampleDump).call(this, freeducks));
-  }
-
-  return InjectedSampleDump;
-}(sample_dump_1.SampleDump);
-
-var InjectedSamplePlant =
-/*#__PURE__*/
-function (_sample_plant_1$Sampl) {
-  _inherits(InjectedSamplePlant, _sample_plant_1$Sampl);
-
-  function InjectedSamplePlant() {
-    _classCallCheck(this, InjectedSamplePlant);
-
-    return _possibleConstructorReturn(this, _getPrototypeOf(InjectedSamplePlant).call(this, freeducks));
-  }
-
-  return InjectedSamplePlant;
-}(sample_plant_1.SamplePlant);
-
-window.customElements.define(sample_button_1.SampleButton.componentName, InjectedSampleButton);
-window.customElements.define(sample_dump_1.SampleDump.componentName, InjectedSampleDump);
-window.customElements.define(sample_plant_1.SamplePlant.componentName, InjectedSamplePlant);
-},{"./sample-button":"sample-button.ts","./freeducks/index":"freeducks/index.ts","./sample-dump":"sample-dump.ts","./sample-plant":"sample-plant.ts"}],"node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+DefineWithState(sample_button_1.SampleButton);
+DefineWithState(state_dump_1.StateDump);
+DefineWithState(potted_plant_1.PottedPlant);
+DefineWithState(game_window_1.GameWindow); // class InjectedSampleButton extends SampleButton{
+//     constructor() {
+//         super(freeducks);
+//     }
+// }
+// class InjectedStateDump extends StateDump{
+//     constructor() {
+//         super(freeducks);
+//     }
+// }
+// class InjectedPottedPlant extends PottedPlant {
+//     constructor() {
+//         super(freeducks);
+//     }
+// }
+// window.customElements.define(SampleButton.componentName, InjectedSampleButton);
+// window.customElements.define(StateDump.componentName, InjectedStateDump);
+// window.customElements.define(PottedPlant.componentName, InjectedPottedPlant);
+},{"./components/sample-button":"components/sample-button.ts","./freeducks/index":"freeducks/index.ts","./components/state-dump":"components/state-dump.ts","./components/potted-plant":"components/potted-plant.ts","./components/game-window":"components/game-window.ts"}],"node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -597,7 +736,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63854" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65416" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -1,7 +1,8 @@
-import {SampleButton} from './sample-button';
+import {SampleButton} from './components/sample-button';
 import {FreeDucks, Reducer, Action} from './freeducks/index';
-import { SampleDump } from './sample-dump';
-import { SamplePlant } from './sample-plant';
+import { StateDump } from './components/state-dump';
+import { PottedPlant } from './components/potted-plant';
+import { GameWindow } from './components/game-window';
 
 const freeducks = new FreeDucks({count: 0});
 
@@ -17,24 +18,39 @@ const countReducer = {
 
 freeducks.registerReducer(countReducer);
 
-class InjectedSampleButton extends SampleButton{
-    constructor() {
-        super(freeducks);
+const DefineWithState = (ComponentClass) => {
+    class InjectedComponent extends ComponentClass {
+        constructor() {
+            super(freeducks);
+        }
     }
+
+    window.customElements.define(ComponentClass.componentName, InjectedComponent);
 }
 
-class InjectedSampleDump extends SampleDump{
-    constructor() {
-        super(freeducks);
-    }
-}
+DefineWithState(SampleButton);
+DefineWithState(StateDump);
+DefineWithState(PottedPlant);
+DefineWithState(GameWindow);
 
-class InjectedSamplePlant extends SamplePlant {
-    constructor() {
-        super(freeducks);
-    }
-}
+// class InjectedSampleButton extends SampleButton{
+//     constructor() {
+//         super(freeducks);
+//     }
+// }
 
-window.customElements.define(SampleButton.componentName, InjectedSampleButton);
-window.customElements.define(SampleDump.componentName, InjectedSampleDump);
-window.customElements.define(SamplePlant.componentName, InjectedSamplePlant);
+// class InjectedStateDump extends StateDump{
+//     constructor() {
+//         super(freeducks);
+//     }
+// }
+
+// class InjectedPottedPlant extends PottedPlant {
+//     constructor() {
+//         super(freeducks);
+//     }
+// }
+
+// window.customElements.define(SampleButton.componentName, InjectedSampleButton);
+// window.customElements.define(StateDump.componentName, InjectedStateDump);
+// window.customElements.define(PottedPlant.componentName, InjectedPottedPlant);

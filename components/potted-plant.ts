@@ -1,12 +1,12 @@
-import {FreeDucks} from './freeducks/index';
-import background from './assets/plants/plants_0.png';
-import seed from './assets/plants/plants_1.png';
-import seedling from './assets/plants/plants_2.png';
-import young from './assets/plants/plants_3.png';
-import grown from './assets/plants/plants_4.png';
-import berries from './assets/plants/plants_5.png';
+import {FreeDucks} from '../freeducks/index';
+import background from '../assets/plants/plants_0.png';
+import seed from '../assets/plants/plants_1.png';
+import seedling from '../assets/plants/plants_2.png';
+import young from '../assets/plants/plants_3.png';
+import grown from '../assets/plants/plants_4.png';
+import berries from '../assets/plants/plants_5.png';
 
-export class SamplePlant extends HTMLElement {
+export class PottedPlant extends HTMLElement {
     private canvas: HTMLCanvasElement;
     private canvasContext: CanvasRenderingContext2D;
     private shadow: ShadowRoot;
@@ -28,7 +28,7 @@ export class SamplePlant extends HTMLElement {
     }
 
     static get componentName(): string {
-        return 'sample-plant';
+        return 'potted-plant';
     }
 
     private get css(): string {
