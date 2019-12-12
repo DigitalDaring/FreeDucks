@@ -508,27 +508,9 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
-var __importDefault = this && this.__importDefault || function (mod) {
-  return mod && mod.__esModule ? mod : {
-    "default": mod
-  };
-};
-
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-
-var plants_0_png_1 = __importDefault(require("../assets/plants/plants_0.png"));
-
-var plants_1_png_1 = __importDefault(require("../assets/plants/plants_1.png"));
-
-var plants_2_png_1 = __importDefault(require("../assets/plants/plants_2.png"));
-
-var plants_3_png_1 = __importDefault(require("../assets/plants/plants_3.png"));
-
-var plants_4_png_1 = __importDefault(require("../assets/plants/plants_4.png"));
-
-var plants_5_png_1 = __importDefault(require("../assets/plants/plants_5.png"));
 
 var GameWindow =
 /*#__PURE__*/
@@ -542,60 +524,44 @@ function (_HTMLElement) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(GameWindow).call(this));
     _this.freeducks = freeducks;
-    _this.plantPotImage = new Image();
-    _this.seedImage = new Image();
-    _this.seedlingImage = new Image();
-    _this.youngImage = new Image();
-    _this.grownImage = new Image();
-    _this.berriesImage = new Image();
     _this.shadow = _this.attachShadow({
       mode: 'open'
     });
-    _this.plantPotImage.src = plants_0_png_1.default;
-    _this.seedImage.src = plants_1_png_1.default;
-    _this.seedlingImage.src = plants_2_png_1.default;
-    _this.youngImage.src = plants_3_png_1.default;
-    _this.grownImage.src = plants_4_png_1.default;
-    _this.berriesImage.src = plants_5_png_1.default;
-    _this.shadow.innerHTML = '<canvas id="plant-canvas" width="48px" height="72px"></canvas';
+    _this.shadow.innerHTML = '<canvas id="plant-canvas" width="48px" height="72px"></canvas>';
     _this.canvas = _this.shadow.querySelector('#plant-canvas');
     _this.canvasContext = _this.canvas.getContext('2d');
 
-    _this.plantPotImage.onload = function () {
-      _this.freeducks.subscribe(function (state) {
-        _this.render(state);
+    _this.freeducks.subscribe(function (state) {
+      _this.render(state);
+    });
+
+    window.setInterval(function () {
+      _this.freeducks.dispatch({
+        name: 'increment'
       });
-
-      window.setInterval(function () {
-        _this.freeducks.dispatch({
-          name: 'increment'
-        });
-      }, 2000);
-    };
-
+    }, 2000);
     return _this;
   }
 
   _createClass(GameWindow, [{
     key: "render",
     value: function render(state) {
+      var _this2 = this;
+
+      this.canvas.width = state.tileSizeX * state.scene.width;
+      this.canvas.height = state.tileSizeY * state.scene.height;
       this.canvasContext.fillStyle = '#FFF';
       this.canvasContext.fillRect(0, 0, this.canvas.width, this.canvas.height);
-      this.canvasContext.drawImage(this.plantPotImage, 0, 0);
+      state.scene.layers.forEach(function (layer) {
+        layer.tileMap.forEach(function (row, yIdx) {
+          var y = yIdx * state.tileSizeY;
+          row.forEach(function (cell, xIdx) {
+            var x = xIdx * state.tileSizeX;
 
-      if (state.count > 1 && state.count < 10) {
-        this.canvasContext.drawImage(this.seedImage, 0, 0);
-      } else if (state.count >= 10 && state.count < 20) {
-        this.canvasContext.drawImage(this.seedlingImage, 0, 0);
-      } else if (state.count >= 20 && state.count < 30) {
-        this.canvasContext.drawImage(this.youngImage, 0, 0);
-      } else if (state.count >= 30) {
-        this.canvasContext.drawImage(this.grownImage, 0, 0);
-      }
-
-      if (state.count > 40) {
-        this.canvasContext.drawImage(this.berriesImage, 0, 0);
-      }
+            _this2.canvasContext.drawImage(state.tileSet[cell], x, y);
+          });
+        });
+      });
     }
   }], [{
     key: "componentName",
@@ -607,22 +573,50 @@ function (_HTMLElement) {
   return GameWindow;
 }(_wrapNativeSuper(HTMLElement));
 
-exports.GameWindow = GameWindow; // super();
-// this.shadow = this.attachShadow({mode: 'open'});
-// const potImg = new Image(48, 72);
-// potImg.src = background;
-// this.shadow.innerHTML = '<canvas id="plant-canvas" width="48px" height="72px"></canvas';
-// this.canvas = this.shadow.querySelector('#plant-canvas') as HTMLCanvasElement;
-// this.canvasContext = this.canvas.getContext('2d');
-// this.canvasContext.fillStyle = 'rgba(0,0,0,1)';
-// this.canvasContext.fillRect(0, 0, 20, 20);
-// potImg.onload = (e) => {
-//     this.canvasContext.drawImage(potImg, 0, 0);
-// };
-// this.freeducks.subscribe((state) => {
-//     this.render(state);
-// })
-},{"../assets/plants/plants_0.png":"assets/plants/plants_0.png","../assets/plants/plants_1.png":"assets/plants/plants_1.png","../assets/plants/plants_2.png":"assets/plants/plants_2.png","../assets/plants/plants_3.png":"assets/plants/plants_3.png","../assets/plants/plants_4.png":"assets/plants/plants_4.png","../assets/plants/plants_5.png":"assets/plants/plants_5.png"}],"index.ts":[function(require,module,exports) {
+exports.GameWindow = GameWindow;
+},{}],"state/layer.ts":[function(require,module,exports) {
+"use strict";
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var Layer = function Layer() {
+  _classCallCheck(this, Layer);
+};
+
+exports.Layer = Layer;
+},{}],"state/scene.ts":[function(require,module,exports) {
+"use strict";
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var Scene = function Scene() {
+  _classCallCheck(this, Scene);
+};
+
+exports.Scene = Scene;
+},{}],"assets/building/wall_02.png":[function(require,module,exports) {
+module.exports = "/wall_02.bd96b3b6.png";
+},{}],"assets/building/wall_01.png":[function(require,module,exports) {
+module.exports = "/wall_01.d4eda60b.png";
+},{}],"assets/building/wall_00.png":[function(require,module,exports) {
+module.exports = "/wall_00.378e5fbb.png";
+},{}],"assets/building/wall_03.png":[function(require,module,exports) {
+module.exports = "/wall_03.4dc81adf.png";
+},{}],"assets/building/wall_05.png":[function(require,module,exports) {
+module.exports = "/wall_05.0881826f.png";
+},{}],"assets/building/wall_04.png":[function(require,module,exports) {
+module.exports = "/wall_04.b0b865de.png";
+},{}],"assets/building/wall_06.png":[function(require,module,exports) {
+module.exports = "/wall_06.a6d186dc.png";
+},{}],"index.ts":[function(require,module,exports) {
 "use strict";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -639,6 +633,20 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -653,8 +661,84 @@ var potted_plant_1 = require("./components/potted-plant");
 
 var game_window_1 = require("./components/game-window");
 
+var layer_1 = require("./state/layer");
+
+var scene_1 = require("./state/scene");
+
+var plants_0_png_1 = __importDefault(require("./assets/plants/plants_0.png"));
+
+var plants_1_png_1 = __importDefault(require("./assets/plants/plants_1.png"));
+
+var plants_2_png_1 = __importDefault(require("./assets/plants/plants_2.png"));
+
+var plants_3_png_1 = __importDefault(require("./assets/plants/plants_3.png"));
+
+var plants_4_png_1 = __importDefault(require("./assets/plants/plants_4.png"));
+
+var plants_5_png_1 = __importDefault(require("./assets/plants/plants_5.png"));
+
+var wall_02_png_1 = __importDefault(require("./assets/building/wall_02.png"));
+
+var wall_01_png_1 = __importDefault(require("./assets/building/wall_01.png"));
+
+var wall_00_png_1 = __importDefault(require("./assets/building/wall_00.png"));
+
+var wall_03_png_1 = __importDefault(require("./assets/building/wall_03.png"));
+
+var wall_05_png_1 = __importDefault(require("./assets/building/wall_05.png"));
+
+var wall_04_png_1 = __importDefault(require("./assets/building/wall_04.png"));
+
+var wall_06_png_1 = __importDefault(require("./assets/building/wall_06.png"));
+
+var blankScene = new scene_1.Scene();
+blankScene.width = 10;
+blankScene.height = 4;
+blankScene.layers = [];
+var wallImage = new Image(64, 96);
+wallImage.src = wall_02_png_1.default;
+var leftWindowImage = new Image(64, 96);
+leftWindowImage.src = wall_01_png_1.default;
+var rightWindowImage = new Image(64, 96);
+rightWindowImage.src = wall_00_png_1.default;
+var topLeftWindowImage = new Image(64, 96);
+topLeftWindowImage.src = wall_03_png_1.default;
+var topWindowImage = new Image(64, 96);
+topWindowImage.src = wall_05_png_1.default;
+var topRightWindowImage = new Image(64, 96);
+topRightWindowImage.src = wall_04_png_1.default;
+var windowPaneImage = new Image(64, 96);
+windowPaneImage.src = wall_06_png_1.default;
+var plantPotImage = new Image(64, 96);
+plantPotImage.src = plants_0_png_1.default;
+var seedImage = new Image(64, 96);
+seedImage.src = plants_1_png_1.default;
+var seedlingImage = new Image(64, 96);
+seedlingImage.src = plants_2_png_1.default;
+var youngImage = new Image(64, 96);
+youngImage.src = plants_3_png_1.default;
+var grownImage = new Image(64, 96);
+grownImage.src = plants_4_png_1.default;
+var berriesImage = new Image(64, 96);
+berriesImage.src = plants_5_png_1.default;
+var wallLayer = new layer_1.Layer();
+wallLayer.width = 10;
+wallLayer.height = 3;
+wallLayer.x = 0;
+wallLayer.y = 0;
+wallLayer.z = 0;
+wallLayer.tileMap = new Array();
+var backgroundMapString = "# { = = } { = } # #\n # [ W W ] [ W ] # #\n # # # # # # # # # #";
+var rows = backgroundMapString.split('\n');
+wallLayer.tileMap = rows.map(function (row) {
+  return row.trim().split(' ');
+});
 var freeducks = new index_1.FreeDucks({
-  count: 0
+  count: 0,
+  scene: blankScene,
+  tileSet: {},
+  tileSizeX: 64,
+  tileSizeY: 96
 });
 var countReducer = {
   update: function update(action, state) {
@@ -667,7 +751,31 @@ var countReducer = {
     return newState;
   }
 };
+var tileSetReducer = {
+  update: function update(action, state) {
+    var newState = Object.assign({}, state);
+
+    if (action.name === 'setTile') {
+      newState.tileSet[action.data.id] = action.data.tile;
+    }
+
+    return newState;
+  }
+};
+var layerReducer = {
+  update: function update(action, state) {
+    var newState = Object.assign({}, state);
+
+    if (action.name === 'addLayer') {
+      newState.scene.layers = [].concat(_toConsumableArray(newState.scene.layers), [action.data]);
+    }
+
+    return newState;
+  }
+};
 freeducks.registerReducer(countReducer);
+freeducks.registerReducer(tileSetReducer);
+freeducks.registerReducer(layerReducer);
 
 var DefineWithState = function DefineWithState(ComponentClass) {
   var InjectedComponent =
@@ -690,7 +798,71 @@ var DefineWithState = function DefineWithState(ComponentClass) {
 DefineWithState(sample_button_1.SampleButton);
 DefineWithState(state_dump_1.StateDump);
 DefineWithState(potted_plant_1.PottedPlant);
-DefineWithState(game_window_1.GameWindow); // class InjectedSampleButton extends SampleButton{
+DefineWithState(game_window_1.GameWindow);
+
+wallImage.onload = function () {
+  /*import leftWindow from './assets/building/wall_01.png';
+  import rightWindow from './assets/building/wall_00.png';
+  import topLeftWindow from './assets/building/wall_03.png';
+  import topWindow from './assets/building/wall_05.png';
+  import topRightWindow from './assets/building/wall_04.png';
+  import windowPane from './assets/building/wall_06.png';
+  */
+  freeducks.dispatch({
+    name: 'setTile',
+    data: {
+      id: '#',
+      tile: wallImage
+    }
+  });
+  freeducks.dispatch({
+    name: 'setTile',
+    data: {
+      id: '[',
+      tile: leftWindowImage
+    }
+  });
+  freeducks.dispatch({
+    name: 'setTile',
+    data: {
+      id: ']',
+      tile: rightWindowImage
+    }
+  });
+  freeducks.dispatch({
+    name: 'setTile',
+    data: {
+      id: '{',
+      tile: topLeftWindowImage
+    }
+  });
+  freeducks.dispatch({
+    name: 'setTile',
+    data: {
+      id: '}',
+      tile: topRightWindowImage
+    }
+  });
+  freeducks.dispatch({
+    name: 'setTile',
+    data: {
+      id: '=',
+      tile: topWindowImage
+    }
+  });
+  freeducks.dispatch({
+    name: 'setTile',
+    data: {
+      id: 'W',
+      tile: windowPaneImage
+    }
+  }); //freeducks.dispatch({name: 'addLayer', data: backgroundLayer});
+
+  freeducks.dispatch({
+    name: 'addLayer',
+    data: wallLayer
+  });
+}; // class InjectedSampleButton extends SampleButton{
 //     constructor() {
 //         super(freeducks);
 //     }
@@ -708,7 +880,7 @@ DefineWithState(game_window_1.GameWindow); // class InjectedSampleButton extends
 // window.customElements.define(SampleButton.componentName, InjectedSampleButton);
 // window.customElements.define(StateDump.componentName, InjectedStateDump);
 // window.customElements.define(PottedPlant.componentName, InjectedPottedPlant);
-},{"./components/sample-button":"components/sample-button.ts","./freeducks/index":"freeducks/index.ts","./components/state-dump":"components/state-dump.ts","./components/potted-plant":"components/potted-plant.ts","./components/game-window":"components/game-window.ts"}],"node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./components/sample-button":"components/sample-button.ts","./freeducks/index":"freeducks/index.ts","./components/state-dump":"components/state-dump.ts","./components/potted-plant":"components/potted-plant.ts","./components/game-window":"components/game-window.ts","./state/layer":"state/layer.ts","./state/scene":"state/scene.ts","./assets/plants/plants_0.png":"assets/plants/plants_0.png","./assets/plants/plants_1.png":"assets/plants/plants_1.png","./assets/plants/plants_2.png":"assets/plants/plants_2.png","./assets/plants/plants_3.png":"assets/plants/plants_3.png","./assets/plants/plants_4.png":"assets/plants/plants_4.png","./assets/plants/plants_5.png":"assets/plants/plants_5.png","./assets/building/wall_02.png":"assets/building/wall_02.png","./assets/building/wall_01.png":"assets/building/wall_01.png","./assets/building/wall_00.png":"assets/building/wall_00.png","./assets/building/wall_03.png":"assets/building/wall_03.png","./assets/building/wall_05.png":"assets/building/wall_05.png","./assets/building/wall_04.png":"assets/building/wall_04.png","./assets/building/wall_06.png":"assets/building/wall_06.png"}],"node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -736,7 +908,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65416" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55309" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
