@@ -343,18 +343,18 @@ function (_HTMLElement) {
 }(_wrapNativeSuper(HTMLElement));
 
 exports.StateDump = StateDump;
-},{}],"assets/plants/plants_0.png":[function(require,module,exports) {
-module.exports = "/plants_0.a9b04166.png";
-},{}],"assets/plants/plants_1.png":[function(require,module,exports) {
-module.exports = "/plants_1.a322f4c1.png";
-},{}],"assets/plants/plants_2.png":[function(require,module,exports) {
-module.exports = "/plants_2.d93104bc.png";
-},{}],"assets/plants/plants_3.png":[function(require,module,exports) {
-module.exports = "/plants_3.b2b281e6.png";
-},{}],"assets/plants/plants_4.png":[function(require,module,exports) {
-module.exports = "/plants_4.20c5fe94.png";
-},{}],"assets/plants/plants_5.png":[function(require,module,exports) {
-module.exports = "/plants_5.00ecc715.png";
+},{}],"assets/plants/plants_00.png":[function(require,module,exports) {
+module.exports = "/plants_00.a50ff8f7.png";
+},{}],"assets/plants/plants_01.png":[function(require,module,exports) {
+module.exports = "/plants_01.2d92927a.png";
+},{}],"assets/plants/plants_02.png":[function(require,module,exports) {
+module.exports = "/plants_02.df0730ab.png";
+},{}],"assets/plants/plants_03.png":[function(require,module,exports) {
+module.exports = "/plants_03.795aedca.png";
+},{}],"assets/plants/plants_04.png":[function(require,module,exports) {
+module.exports = "/plants_04.f75d74c9.png";
+},{}],"assets/plants/plants_05.png":[function(require,module,exports) {
+module.exports = "/plants_05.77636a69.png";
 },{}],"components/potted-plant.ts":[function(require,module,exports) {
 "use strict";
 
@@ -394,17 +394,17 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var plants_0_png_1 = __importDefault(require("../assets/plants/plants_0.png"));
+var plants_00_png_1 = __importDefault(require("../assets/plants/plants_00.png"));
 
-var plants_1_png_1 = __importDefault(require("../assets/plants/plants_1.png"));
+var plants_01_png_1 = __importDefault(require("../assets/plants/plants_01.png"));
 
-var plants_2_png_1 = __importDefault(require("../assets/plants/plants_2.png"));
+var plants_02_png_1 = __importDefault(require("../assets/plants/plants_02.png"));
 
-var plants_3_png_1 = __importDefault(require("../assets/plants/plants_3.png"));
+var plants_03_png_1 = __importDefault(require("../assets/plants/plants_03.png"));
 
-var plants_4_png_1 = __importDefault(require("../assets/plants/plants_4.png"));
+var plants_04_png_1 = __importDefault(require("../assets/plants/plants_04.png"));
 
-var plants_5_png_1 = __importDefault(require("../assets/plants/plants_5.png"));
+var plants_05_png_1 = __importDefault(require("../assets/plants/plants_05.png"));
 
 var PottedPlant =
 /*#__PURE__*/
@@ -440,28 +440,28 @@ function (_HTMLElement) {
       var berriesProgress;
 
       if (state.count > 1) {
-        plantProgress = plants_1_png_1.default;
+        plantProgress = plants_01_png_1.default;
       }
 
       if (state.count > 10) {
-        plantProgress = plants_2_png_1.default;
+        plantProgress = plants_02_png_1.default;
       }
 
       if (state.count > 20) {
-        plantProgress = plants_3_png_1.default;
+        plantProgress = plants_03_png_1.default;
       }
 
       if (state.count > 30) {
-        plantProgress = plants_4_png_1.default;
+        plantProgress = plants_04_png_1.default;
       }
 
       if (state.count > 40) {
-        berriesProgress = plants_5_png_1.default;
+        berriesProgress = plants_05_png_1.default;
       }
 
       var plantImage = "<img class=\"plant\" src=\"".concat(plantProgress, "\">");
       var berriesImage = "<img class=\"berries\" src=\"".concat(berriesProgress, "\">");
-      this.shadow.innerHTML = "\n            <style>\n                ".concat(this.css, "\n            </style>\n            <div class=\"shelf\">\n                <img class=\"pot\" src=\"").concat(plants_0_png_1.default, "\">\n                ").concat(berriesProgress ? berriesImage : '', "\n                ").concat(plantProgress ? plantImage : '', "\n            </div>\n        ");
+      this.shadow.innerHTML = "\n            <style>\n                ".concat(this.css, "\n            </style>\n            <div class=\"shelf\">\n                <img class=\"pot\" src=\"").concat(plants_00_png_1.default, "\">\n                ").concat(berriesProgress ? berriesImage : '', "\n                ").concat(plantProgress ? plantImage : '', "\n            </div>\n        ");
     }
   }, {
     key: "css",
@@ -479,7 +479,7 @@ function (_HTMLElement) {
 }(_wrapNativeSuper(HTMLElement));
 
 exports.PottedPlant = PottedPlant;
-},{"../assets/plants/plants_0.png":"assets/plants/plants_0.png","../assets/plants/plants_1.png":"assets/plants/plants_1.png","../assets/plants/plants_2.png":"assets/plants/plants_2.png","../assets/plants/plants_3.png":"assets/plants/plants_3.png","../assets/plants/plants_4.png":"assets/plants/plants_4.png","../assets/plants/plants_5.png":"assets/plants/plants_5.png"}],"components/game-window.ts":[function(require,module,exports) {
+},{"../assets/plants/plants_00.png":"assets/plants/plants_00.png","../assets/plants/plants_01.png":"assets/plants/plants_01.png","../assets/plants/plants_02.png":"assets/plants/plants_02.png","../assets/plants/plants_03.png":"assets/plants/plants_03.png","../assets/plants/plants_04.png":"assets/plants/plants_04.png","../assets/plants/plants_05.png":"assets/plants/plants_05.png"}],"components/game-window.ts":[function(require,module,exports) {
 "use strict";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -557,9 +557,18 @@ function (_HTMLElement) {
           var y = yIdx * state.tileSizeY;
           row.forEach(function (cell, xIdx) {
             var x = xIdx * state.tileSizeX;
+            var toDraw = state.tileSet[cell];
 
-            _this2.canvasContext.drawImage(state.tileSet[cell], x, y);
+            if (toDraw) {
+              _this2.canvasContext.drawImage(toDraw, x, y);
+            }
           });
+        });
+      });
+      state.scene.entities.forEach(function (entity) {
+        var y = _this2.canvas.height - entity.y * state.tileSizeY;
+        entity.sprites.forEach(function (sprite) {
+          _this2.canvasContext.drawImage(sprite.image, entity.x * state.tileSizeX, y);
         });
       });
     }
@@ -616,6 +625,34 @@ module.exports = "/wall_05.0881826f.png";
 module.exports = "/wall_04.b0b865de.png";
 },{}],"assets/building/wall_06.png":[function(require,module,exports) {
 module.exports = "/wall_06.a6d186dc.png";
+},{}],"state/entity.ts":[function(require,module,exports) {
+"use strict";
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var Entity = function Entity() {
+  _classCallCheck(this, Entity);
+};
+
+exports.Entity = Entity;
+},{}],"state/sprite.ts":[function(require,module,exports) {
+"use strict";
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var Sprite = function Sprite() {
+  _classCallCheck(this, Sprite);
+};
+
+exports.Sprite = Sprite;
 },{}],"index.ts":[function(require,module,exports) {
 "use strict";
 
@@ -665,17 +702,17 @@ var layer_1 = require("./state/layer");
 
 var scene_1 = require("./state/scene");
 
-var plants_0_png_1 = __importDefault(require("./assets/plants/plants_0.png"));
+var plants_00_png_1 = __importDefault(require("./assets/plants/plants_00.png"));
 
-var plants_1_png_1 = __importDefault(require("./assets/plants/plants_1.png"));
+var plants_01_png_1 = __importDefault(require("./assets/plants/plants_01.png"));
 
-var plants_2_png_1 = __importDefault(require("./assets/plants/plants_2.png"));
+var plants_02_png_1 = __importDefault(require("./assets/plants/plants_02.png"));
 
-var plants_3_png_1 = __importDefault(require("./assets/plants/plants_3.png"));
+var plants_03_png_1 = __importDefault(require("./assets/plants/plants_03.png"));
 
-var plants_4_png_1 = __importDefault(require("./assets/plants/plants_4.png"));
+var plants_04_png_1 = __importDefault(require("./assets/plants/plants_04.png"));
 
-var plants_5_png_1 = __importDefault(require("./assets/plants/plants_5.png"));
+var plants_05_png_1 = __importDefault(require("./assets/plants/plants_05.png"));
 
 var wall_02_png_1 = __importDefault(require("./assets/building/wall_02.png"));
 
@@ -691,10 +728,15 @@ var wall_04_png_1 = __importDefault(require("./assets/building/wall_04.png"));
 
 var wall_06_png_1 = __importDefault(require("./assets/building/wall_06.png"));
 
+var entity_1 = require("./state/entity");
+
+var sprite_1 = require("./state/sprite");
+
 var blankScene = new scene_1.Scene();
 blankScene.width = 10;
 blankScene.height = 4;
 blankScene.layers = [];
+blankScene.entities = [];
 var wallImage = new Image(64, 96);
 wallImage.src = wall_02_png_1.default;
 var leftWindowImage = new Image(64, 96);
@@ -710,17 +752,17 @@ topRightWindowImage.src = wall_04_png_1.default;
 var windowPaneImage = new Image(64, 96);
 windowPaneImage.src = wall_06_png_1.default;
 var plantPotImage = new Image(64, 96);
-plantPotImage.src = plants_0_png_1.default;
+plantPotImage.src = plants_00_png_1.default;
 var seedImage = new Image(64, 96);
-seedImage.src = plants_1_png_1.default;
+seedImage.src = plants_01_png_1.default;
 var seedlingImage = new Image(64, 96);
-seedlingImage.src = plants_2_png_1.default;
+seedlingImage.src = plants_02_png_1.default;
 var youngImage = new Image(64, 96);
-youngImage.src = plants_3_png_1.default;
+youngImage.src = plants_03_png_1.default;
 var grownImage = new Image(64, 96);
-grownImage.src = plants_4_png_1.default;
+grownImage.src = plants_04_png_1.default;
 var berriesImage = new Image(64, 96);
-berriesImage.src = plants_5_png_1.default;
+berriesImage.src = plants_05_png_1.default;
 var wallLayer = new layer_1.Layer();
 wallLayer.width = 10;
 wallLayer.height = 3;
@@ -728,11 +770,19 @@ wallLayer.x = 0;
 wallLayer.y = 0;
 wallLayer.z = 0;
 wallLayer.tileMap = new Array();
-var backgroundMapString = "# { = = } { = } # #\n # [ W W ] [ W ] # #\n # # # # # # # # # #";
-var rows = backgroundMapString.split('\n');
-wallLayer.tileMap = rows.map(function (row) {
+var wallMapString = "\n# { = = } { = = } #\n# [ W W ] [ W W ] #\n# # # # # # # # # #";
+var wallRows = wallMapString.split('\n');
+wallLayer.tileMap = wallRows.map(function (row) {
   return row.trim().split(' ');
 });
+var pottedPlant = new entity_1.Entity();
+pottedPlant.name = "MyPlant";
+var pot = new sprite_1.Sprite();
+pot.image = plantPotImage;
+pot.name = "pot";
+pottedPlant.sprites = [pot];
+pottedPlant.x = 2;
+pottedPlant.y = 2;
 var freeducks = new index_1.FreeDucks({
   count: 0,
   scene: blankScene,
@@ -773,9 +823,21 @@ var layerReducer = {
     return newState;
   }
 };
+var entityReducer = {
+  update: function update(action, state) {
+    var newState = Object.assign({}, state);
+
+    if (action.name === 'addEntity') {
+      newState.scene.entities = [].concat(_toConsumableArray(newState.scene.entities), [action.data]);
+    }
+
+    return newState;
+  }
+};
 freeducks.registerReducer(countReducer);
 freeducks.registerReducer(tileSetReducer);
 freeducks.registerReducer(layerReducer);
+freeducks.registerReducer(entityReducer);
 
 var DefineWithState = function DefineWithState(ComponentClass) {
   var InjectedComponent =
@@ -862,6 +924,10 @@ wallImage.onload = function () {
     name: 'addLayer',
     data: wallLayer
   });
+  freeducks.dispatch({
+    name: 'addEntity',
+    data: pottedPlant
+  });
 }; // class InjectedSampleButton extends SampleButton{
 //     constructor() {
 //         super(freeducks);
@@ -880,7 +946,7 @@ wallImage.onload = function () {
 // window.customElements.define(SampleButton.componentName, InjectedSampleButton);
 // window.customElements.define(StateDump.componentName, InjectedStateDump);
 // window.customElements.define(PottedPlant.componentName, InjectedPottedPlant);
-},{"./components/sample-button":"components/sample-button.ts","./freeducks/index":"freeducks/index.ts","./components/state-dump":"components/state-dump.ts","./components/potted-plant":"components/potted-plant.ts","./components/game-window":"components/game-window.ts","./state/layer":"state/layer.ts","./state/scene":"state/scene.ts","./assets/plants/plants_0.png":"assets/plants/plants_0.png","./assets/plants/plants_1.png":"assets/plants/plants_1.png","./assets/plants/plants_2.png":"assets/plants/plants_2.png","./assets/plants/plants_3.png":"assets/plants/plants_3.png","./assets/plants/plants_4.png":"assets/plants/plants_4.png","./assets/plants/plants_5.png":"assets/plants/plants_5.png","./assets/building/wall_02.png":"assets/building/wall_02.png","./assets/building/wall_01.png":"assets/building/wall_01.png","./assets/building/wall_00.png":"assets/building/wall_00.png","./assets/building/wall_03.png":"assets/building/wall_03.png","./assets/building/wall_05.png":"assets/building/wall_05.png","./assets/building/wall_04.png":"assets/building/wall_04.png","./assets/building/wall_06.png":"assets/building/wall_06.png"}],"node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./components/sample-button":"components/sample-button.ts","./freeducks/index":"freeducks/index.ts","./components/state-dump":"components/state-dump.ts","./components/potted-plant":"components/potted-plant.ts","./components/game-window":"components/game-window.ts","./state/layer":"state/layer.ts","./state/scene":"state/scene.ts","./assets/plants/plants_00.png":"assets/plants/plants_00.png","./assets/plants/plants_01.png":"assets/plants/plants_01.png","./assets/plants/plants_02.png":"assets/plants/plants_02.png","./assets/plants/plants_03.png":"assets/plants/plants_03.png","./assets/plants/plants_04.png":"assets/plants/plants_04.png","./assets/plants/plants_05.png":"assets/plants/plants_05.png","./assets/building/wall_02.png":"assets/building/wall_02.png","./assets/building/wall_01.png":"assets/building/wall_01.png","./assets/building/wall_00.png":"assets/building/wall_00.png","./assets/building/wall_03.png":"assets/building/wall_03.png","./assets/building/wall_05.png":"assets/building/wall_05.png","./assets/building/wall_04.png":"assets/building/wall_04.png","./assets/building/wall_06.png":"assets/building/wall_06.png","./state/entity":"state/entity.ts","./state/sprite":"state/sprite.ts"}],"node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -908,7 +974,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55309" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63007" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

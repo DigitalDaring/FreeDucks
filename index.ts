@@ -6,12 +6,12 @@ import { GameWindow } from './components/game-window';
 import { Layer } from './state/layer';
 import { Scene } from './state/scene';
 
-import plantPot from './assets/plants/plants_0.png';
-import seed from './assets/plants/plants_1.png';
-import seedling from './assets/plants/plants_2.png';
-import young from './assets/plants/plants_3.png';
-import grown from './assets/plants/plants_4.png';
-import berries from './assets/plants/plants_5.png';
+import plantPot from './assets/plants/plants_00.png';
+import seed from './assets/plants/plants_01.png';
+import seedling from './assets/plants/plants_02.png';
+import young from './assets/plants/plants_03.png';
+import grown from './assets/plants/plants_04.png';
+import berries from './assets/plants/plants_05.png';
 
 import brickWall from './assets/building/wall_02.png';
 import leftWindow from './assets/building/wall_01.png';
@@ -20,11 +20,14 @@ import topLeftWindow from './assets/building/wall_03.png';
 import topWindow from './assets/building/wall_05.png';
 import topRightWindow from './assets/building/wall_04.png';
 import windowPane from './assets/building/wall_06.png';
+import { Entity } from './state/entity';
+import { Sprite } from './state/sprite';
 
 const blankScene = new Scene();
 blankScene.width = 10;
 blankScene.height = 4;
 blankScene.layers = [];
+blankScene.entities = [];
 
 const wallImage = new Image(64, 96);
 wallImage.src = brickWall;
@@ -73,15 +76,26 @@ wallLayer.y = 0;
 wallLayer.z = 0;
 wallLayer.tileMap = new Array<Array<String>>();
 
-const backgroundMapString = 
-`# { = = } { = } # #
- # [ W W ] [ W ] # #
- # # # # # # # # # #`;
+const wallMapString = `
+# { = = } { = = } #
+# [ W W ] [ W W ] #
+# # # # # # # # # #`;
 
-const rows = backgroundMapString.split('\n');
-wallLayer.tileMap = rows.map(row => {
+const wallRows = wallMapString.split('\n');
+wallLayer.tileMap = wallRows.map(row => {
     return row.trim().split(' ');
 });
+
+const pottedPlant = new Entity();
+pottedPlant.name = "MyPlant";
+const pot = new Sprite();
+pot.image = plantPotImage;
+pot.name = "pot";
+pottedPlant.sprites = [
+    pot
+];
+pottedPlant.x = 2;
+pottedPlant.y = 2;
 
 const freeducks = new FreeDucks(
     {
@@ -123,10 +137,20 @@ const layerReducer = {
     }
 }
 
+const entityReducer = {
+    update: (action: Action, state: any): any => {
+        let newState = Object.assign({}, state);
+        if(action.name === 'addEntity') {
+            newState.scene.entities = [...newState.scene.entities, action.data];
+        }
+        return newState;
+    }
+}
 
 freeducks.registerReducer(countReducer);
 freeducks.registerReducer(tileSetReducer);
 freeducks.registerReducer(layerReducer);
+freeducks.registerReducer(entityReducer);
 
 const DefineWithState = (ComponentClass) => {
     class InjectedComponent extends ComponentClass {
@@ -161,7 +185,8 @@ import windowPane from './assets/building/wall_06.png';
     freeducks.dispatch({name: 'setTile', data: {id: '=', tile: topWindowImage}} as Action);
     freeducks.dispatch({name: 'setTile', data: {id: 'W', tile: windowPaneImage}} as Action);
     //freeducks.dispatch({name: 'addLayer', data: backgroundLayer});
-    freeducks.dispatch({name: 'addLayer', data: wallLayer});
+    freeducks.dispatch({name: 'addLayer', data: wallLayer} as Action);
+    freeducks.dispatch({name: 'addEntity', data: pottedPlant} as Action);
 
 };
 

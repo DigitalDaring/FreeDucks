@@ -1,4 +1,6 @@
 import {Action, FreeDucks} from '../freeducks/index';
+import { Entity } from './state/entity';
+import { Sprite } from './state/sprite';
 
 export class GameWindow extends HTMLElement {
     private canvas: HTMLCanvasElement;
@@ -38,9 +40,19 @@ export class GameWindow extends HTMLElement {
                 const y = yIdx * state.tileSizeY;
                 row.forEach((cell, xIdx) => {
                     const x = xIdx * state.tileSizeX;
-                    this.canvasContext.drawImage(state.tileSet[cell], x, y);
+                    const toDraw = state.tileSet[cell];
+                    if(toDraw) {
+                        this.canvasContext.drawImage(toDraw, x, y);
+                    }
                 });
             })
+        });
+
+        state.scene.entities.forEach((entity: Entity) => {
+            const y = this.canvas.height - entity.y * state.tileSizeY;
+            entity.sprites.forEach((sprite: Sprite) => {
+                this.canvasContext.drawImage(sprite.image, entity.x * state.tileSizeX, y);
+            });
         });
     }
 }

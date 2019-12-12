@@ -1,10 +1,10 @@
 import {FreeDucks} from '../freeducks/index';
-import background from '../assets/plants/plants_0.png';
-import seed from '../assets/plants/plants_1.png';
-import seedling from '../assets/plants/plants_2.png';
-import young from '../assets/plants/plants_3.png';
-import grown from '../assets/plants/plants_4.png';
-import berries from '../assets/plants/plants_5.png';
+import background from '../assets/plants/plants_00.png';
+import seed from '../assets/plants/plants_01.png';
+import seedling from '../assets/plants/plants_02.png';
+import young from '../assets/plants/plants_03.png';
+import grown from '../assets/plants/plants_04.png';
+import berries from '../assets/plants/plants_05.png';
 
 export class PottedPlant extends HTMLElement {
     private canvas: HTMLCanvasElement;
